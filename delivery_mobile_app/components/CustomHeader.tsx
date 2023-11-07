@@ -1,8 +1,11 @@
 import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Image, TextInput } from 'react-native'
-import React from 'react'
+import React, {useRef} from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import Colors from '@/constants/Colors'
 import { Link } from 'expo-router'
+import BottomSheet from './BottomSheet';
+import { BottomSheetModal } from '@gorhom/bottom-sheet';
+
 
 const SearchBar = () => (
     <View style={styles.searchConrainer}>
@@ -21,23 +24,29 @@ const SearchBar = () => (
 )
 
 const CustomHeader = () => {
+    const bottomSheetRef = useRef<BottomSheetModal>(null);
+    const openModal = () => {
+        bottomSheetRef.current?.present();
+    } 
+
   return (
     <SafeAreaView style={styles.saveArea}>
+        <BottomSheet ref={bottomSheetRef} />
         <View style={ styles.container}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={openModal}>
                 <Image 
                 source={(require('@/assets/images/bike.png'))}
                 style={styles.bike}
                 />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.titleContainer}>
+            <TouchableOpacity style={styles.titleContainer} onPress={openModal}>
                 <Text style={styles.title}>Delivery Now</Text>
                 <View style={styles.locationName}>
                     <Text style={styles.subtitle}>London</Text>
                     <Ionicons name='chevron-down'  size={20} color={Colors.primary}/>
                 </View>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.profileButton}>
+            <TouchableOpacity style={styles.profileButton} onPress={openModal}>
                 <Ionicons name='person-outline' size={20} color={Colors.primary}/>
             </TouchableOpacity>
         </View>

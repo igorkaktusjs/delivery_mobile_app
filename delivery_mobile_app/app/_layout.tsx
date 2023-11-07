@@ -1,5 +1,6 @@
 import { Stack } from 'expo-router';
 import CustomHeader from '@/components/CustomHeader';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
@@ -10,6 +11,7 @@ export const unstable_settings = {
 
 
   return (
+    <BottomSheetModalProvider>
       <Stack>
         <Stack.Screen 
         name="index" 
@@ -17,5 +19,6 @@ export const unstable_settings = {
           header: () => <CustomHeader/>
          }} />
       </Stack>
+      </BottomSheetModalProvider>
   );
 }
