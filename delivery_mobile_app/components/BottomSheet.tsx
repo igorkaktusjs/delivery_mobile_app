@@ -43,25 +43,37 @@ const BottomSheet = forwardRef<Ref>((props, ref) => {
           </TouchableOpacity>
         </View>
         <Text style={styles.subheader}>Your Location</Text>
-        <Link href={'/'} asChild>
-            <TouchableOpacity>
-                <View style={styles.item}>
-                    <Ionicons name='location-outline' size={20} color={Colors.medium}/>
-                    <Text style={{flex: 1}}>Current location</Text>
-                    <Ionicons name='chevron-forward' size={20} color={Colors.primary}/>
-                </View>
-            </TouchableOpacity>
+        <Link href={"/(modal)/location-search"} asChild>
+          <TouchableOpacity>
+            <View style={styles.item}>
+              <Ionicons
+                name="location-outline"
+                size={20}
+                color={Colors.medium}
+              />
+              <Text style={{ flex: 1 }}>Current location</Text>
+              <Ionicons
+                name="chevron-forward"
+                size={20}
+                color={Colors.primary}
+              />
+            </View>
+          </TouchableOpacity>
         </Link>
 
         <Text style={styles.subheader}>Arrival time</Text>
 
         <TouchableOpacity>
-                <View style={styles.item}>
-                    <Ionicons name='stopwatch-outline' size={20} color={Colors.medium}/>
-                    <Text style={{flex: 1}}>Now</Text>
-                    <Ionicons name='chevron-forward' size={20} color={Colors.primary}/>
-                </View>
-            </TouchableOpacity>
+          <View style={styles.item}>
+            <Ionicons
+              name="stopwatch-outline"
+              size={20}
+              color={Colors.medium}
+            />
+            <Text style={{ flex: 1 }}>Now</Text>
+            <Ionicons name="chevron-forward" size={20} color={Colors.primary} />
+          </View>
+        </TouchableOpacity>
 
         <TouchableOpacity onPress={() => dismiss()} style={styles.button}>
           <Text style={styles.buttonText}>Comfirm</Text>
@@ -74,7 +86,6 @@ const BottomSheet = forwardRef<Ref>((props, ref) => {
 const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
-
   },
   toggle: {
     flexDirection: "row",
@@ -110,21 +121,21 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
   },
-  subheader:{
-      fontSize: 16,
-      fontWeight: '600',
-      margin: 16
+  subheader: {
+    fontSize: 16,
+    fontWeight: "600",
+    margin: 16,
   },
   item: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      gap: 8,
-      alignItems: 'center',
-      borderColor: Colors.grey,
-      borderWidth: 1,
-      padding: 16,
-      backgroundColor: '#fff'
-  }
+    flexDirection: "row",
+    justifyContent: "space-between",
+    gap: 8,
+    alignItems: "center",
+    borderColor: Colors.grey,
+    borderWidth: 1,
+    padding: 16,
+    backgroundColor: "#fff",
+  },
 });
 
 export default BottomSheet;

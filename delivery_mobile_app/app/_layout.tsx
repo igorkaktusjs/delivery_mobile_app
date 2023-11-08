@@ -39,6 +39,19 @@ const navigation = useNavigation();
           
          }}
          />
+         <Stack.Screen 
+         name="(modal)/location-search"
+         options={{
+          presentation: 'fullScreenModal',
+          headerTitle: 'Select location',
+          headerLeft: () => (
+            <TouchableOpacity onPress={navigation.goBack}>
+              <Ionicons name='close-outline' size={28} color={Colors.primary}/>
+              </TouchableOpacity>
+          )
+          
+         }} 
+         />
       </Stack>
       </BottomSheetModalProvider>
   );
