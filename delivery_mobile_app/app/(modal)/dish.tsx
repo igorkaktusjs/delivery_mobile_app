@@ -6,18 +6,20 @@ import Colors from '@/constants/Colors'
 import Animated, { FadeIn, FadeInLeft } from 'react-native-reanimated'
 import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router'
+import useBasketsStore from '@/store/basketStore'
 
 const dish = () => {
     const {id} = useLocalSearchParams();
-    const item = getDishById(+id)
+    const item = getDishById(+id)!;
     const fouter = useRouter;
+    const { addProduct } = useBasketsStore();
 
     const AddToCart = () => {
+        addProduct(item);
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         router.back();
-
-    }
         
+    }
         
         
     
@@ -35,12 +37,9 @@ const dish = () => {
             </View>
 
             <View style={styles.footer}>
-                <View>
                 <TouchableOpacity style={styles.fullButton} onPress={AddToCart}>
-                    <Text style={styles.footerText}> Add for {item?.price}</Text>
+                    <Text style={styles.footerText}> Add for $ {item?.price}</Text>
                 </TouchableOpacity>
-                    
-                </View>
                 </View>
 
     </View>
